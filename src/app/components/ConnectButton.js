@@ -4,30 +4,37 @@ import React, { useEffect } from "react";
 // creating a component that will allow users to connect their MetaMask wallets
 const ConnectButton = () => {
 	useEffect(() => {
-		//button ID
+		//getting the button element by ID
 		const connectButton = document.getElementById("connect-button");
 
+		// function to handle the connect button click
 		const handleConnect = () => {
 			connectAccount();
 		};
 		if (connectButton) {
-			//event listeners
+			// addind event listeners to the connect button
 			connectButton.addEventListener("click", handleConnect);
 		}
 
+		//cleanup function to remove the event listener when the component is no longer needed
 		return () => {
 			if (connectButton) {
 				connectButton.removeEventListener("click", handleConnect);
 			}
 		};
-	}, []); // Empty dependency array ensures that this effect runs only once, similar to componentDidMount
+	}, []); //empty dependency array ensures that this effect runs only once, similar to when the component first appears
 
-	//Connect Account Function
+	//function to connect the MetMask wallet
 	async function connectAccount() {
+		//request accounts from the MetaMask wallet
 		const accounts = await ethereum.request({
 			method: "eth_requestAccounts",
 		});
+		//get the first account from the returned accounts
+
 		const account = accounts[0];
+
+		// Updating the content of the connect button with a partial representation of the account
 		connectButton.innerHTML =
 			account[0] +
 			account[1] +
@@ -42,6 +49,7 @@ const ConnectButton = () => {
 			account[41];
 	}
 
+	//rendering the component
 	return (
 		<div className="flex items-center justify-center h-screen">
 			<button className="text-white border-8 p-4" id="connect-button">
