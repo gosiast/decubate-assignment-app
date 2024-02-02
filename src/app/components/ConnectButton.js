@@ -3,10 +3,14 @@ import React, { useEffect } from "react";
 
 // creating a component that will allow users to connect their MetaMask wallets
 const ConnectButton = () => {
+	let connectButton;
 	useEffect(() => {
 		//getting the button element by ID
-		const connectButton = document.getElementById("connect-button");
+		const connectButton = document.getElementById("connect");
 
+		if (typeof window.ethereum !== "undefined") {
+			console.log("Injected Web3 Wallet is installed!");
+		}
 		// function to handle the connect button click
 		const handleConnect = () => {
 			connectAccount();
@@ -52,7 +56,7 @@ const ConnectButton = () => {
 	//rendering the component
 	return (
 		<div className="flex items-center justify-center h-screen">
-			<button className="text-white border-8 p-4" id="connect-button">
+			<button className="text-white border-8 p-4" id="connect">
 				Connect Wallet Button
 			</button>
 		</div>
