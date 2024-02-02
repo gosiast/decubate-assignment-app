@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 
 // creating a component that will allow users to connect their MetaMask wallets
 const ConnectButton = () => {
-	let connectButton;
 	useEffect(() => {
 		//getting the button element by ID
 		const connectButton = document.getElementById("connect");
@@ -39,7 +38,7 @@ const ConnectButton = () => {
 		const account = accounts[0];
 
 		// Updating the content of the connect button with a partial representation of the account
-		connectButton.innerHTML =
+		ConnectButton.innerHTML =
 			account[0] +
 			account[1] +
 			account[2] +
