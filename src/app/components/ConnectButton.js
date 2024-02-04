@@ -56,7 +56,7 @@ const ConnectButton = () => {
 	return (
 		<div className="flex items-center justify-center h-screen">
 			<button className="text-white border-8 p-4" id="connect">
-				Connect Wallet Button
+				Connect Wallet
 			</button>
 		</div>
 	);
